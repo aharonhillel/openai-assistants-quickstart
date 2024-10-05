@@ -1,8 +1,14 @@
 .chatContainer {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   height: 100%;
   width: 100%;
+  align-items: center; /* Center content horizontally */
+}
+
+.logo {
+  margin-top: 20px; /* Add some spacing from the top */
+  order: -1; /* Ensure the logo appears above the messages and input bar */
 }
 
 .inputForm {
@@ -10,7 +16,8 @@
   width: 100%;
   padding: 10px;
   padding-bottom: 40px;
-  order: 1;
+  order: 2; /* Input form stays at the bottom */
+  max-width: 800px; /* Limit width to a reasonable size for larger screens */
 }
 
 .input {
@@ -35,7 +42,7 @@
   color: white;
   border: none;
   font-size: 1em;
-  border-radius: 60px; /* Removed duplicate border-radius property */
+  border-radius: 60px;
 }
 
 .button:disabled {
@@ -48,7 +55,9 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  order: 2;
+  width: 100%;
+  max-width: 800px; /* Limit the maximum width of the messages */
+  order: 1; /* Messages come just above the input form */
   white-space: pre-wrap;
 }
 
@@ -57,16 +66,9 @@
 .codeMessage {
   margin: 8px 0;
   padding: 8px 16px;
-  align-self: flex-start;
   border-radius: 15px;
-  max-width: 80%;
+  max-width: 100%; /* Allow messages to take up full width of their container */
   overflow-wrap: break-word;
-}
-
-.assistantMessage img {
-  max-width: 100%;
-  margin: 8px 0px 8px 0px;
-  border-radius: 8px;
 }
 
 .userMessage {
@@ -76,6 +78,7 @@
 }
 
 .assistantMessage {
+  align-self: flex-start;
   background-color: #efefef;
 }
 
