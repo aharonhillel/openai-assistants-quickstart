@@ -148,10 +148,6 @@ const Chat = ({
     }
   };
 
-  const handleImageFileDone = (image) => {
-    appendToLastMessage(`\n![${image.file_id}](/api/files/${image.file_id})\n`);
-  }
-
   const toolCallCreated = (toolCall) => {
     if (toolCall.type != "code_interpreter") return;
     appendMessage("code", "");
@@ -185,7 +181,6 @@ const Chat = ({
   const handleReadableStream = (stream: AssistantStream) => {
     stream.on("textCreated", handleTextCreated);
     stream.on("textDelta", handleTextDelta);
-    stream.on("imageFileDone", handleImageFileDone);
     stream.on("toolCallCreated", toolCallCreated);
     stream.on("toolCallDelta", toolCallDelta);
     stream.on("event", (event) => {
@@ -232,6 +227,7 @@ const Chat = ({
 <div className={styles.chatContainer}>
   <div className={styles.logo}>
     <img src="/logo.webp" width="100px" height="100px" alt="Logo" style={{ borderRadius: "50%" }} />
+    <p style={{textAlign: "center", marginTop: 20 }}>Luc-ÍA</p>
   </div>
   <div className={styles.messages}>
     {messages.map((msg, index) => (
@@ -248,14 +244,14 @@ const Chat = ({
       className={styles.input}
       value={userInput}
       onChange={(e) => setUserInput(e.target.value)}
-      placeholder="Enter your question"
+      placeholder="Ingresa tu pregunta"
     />
     <button
       type="submit"
       className={styles.button}
       disabled={inputDisabled}
     >
-      Send
+      Enviar
     </button>
   </form>
 </div>
